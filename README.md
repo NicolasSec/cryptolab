@@ -1,76 +1,59 @@
-# CryptoLab — Projeto de Criptografia
+<div align="center">
 
-Laboratório de estudos de criptografia em Python, desenvolvido por Nicolas Moreira Silva para praticar conceitos matemáticos, analisar desafios de CTF e documentar o aprendizado em cibersegurança.
+# CryptoLab
 
-## Objetivo
+**Cryptographic Analysis & Security Toolkit**
 
-Construir o projeto gradualmente, começando pelo RSA e incorporando novas implementações conforme os estudos avançarem. Cada etapa deve incluir código compreensível, exemplos reproduzíveis e documentação do que foi aprendido.
+Laboratório pessoal de criptografia em Python para explorar algoritmos, compreender seus fundamentos matemáticos e estudar a segurança da informação na prática.
 
-## Estado atual
+[Sobre](#sobre-o-projeto) · [Áreas de estudo](#áreas-de-estudo) · [Abordagem](#abordagem) · [Autor](#autor)
 
-Esta versão contém a estrutura inicial e a documentação. A implementação RSA já foi desenvolvida nos estudos e será incorporada a partir do arquivo atualizado do autor. Ainda não há algoritmos executáveis nesta base.
+</div>
 
-## Organização
+---
 
-| Caminho | Finalidade |
+## Sobre o projeto
+
+O **CryptoLab** é um projeto de estudo e experimentação dedicado à criptografia e à análise criptográfica. Sua proposta é reunir, em um laboratório organizado, conhecimentos sobre representação de dados, criptografia simétrica e assimétrica, funções de hash e assinaturas digitais.
+
+Desenvolvido em **Python**, o projeto conecta teoria e prática por meio da construção de implementações didáticas e da análise das operações envolvidas na proteção de informações. O foco é compreender como cada técnica funciona, quais problemas resolve e como suas escolhas matemáticas e de implementação influenciam a segurança.
+
+O laboratório também propõe investigar as limitações dos algoritmos e os efeitos de configurações inadequadas, desenvolvendo uma visão crítica sobre confidencialidade, integridade e autenticidade.
+
+## Áreas de estudo
+
+O escopo do CryptoLab está organizado em seis áreas complementares:
+
+| Área | Foco |
 | --- | --- |
-| `cryptolab/` | Implementações em Python |
-| `tests/` | Testes das operações implementadas |
-| `docs/` | Explicações técnicas e registro de evolução |
-| `ctf_writeups/` | Resoluções documentadas de desafios |
+| **Decoder** | Representação e transformação de dados com hexadecimal, Base64 e ROT13, distinguindo codificação de criptografia. |
+| **XOR Analyzer** | Operações bit a bit, aplicação de chaves e análise de padrões para compreender o papel do XOR em transformações criptográficas. |
+| **RSA Lab** | Criptografia de chave pública, números primos, aritmética modular, totiente de Euler, inverso modular e fatoração pelo método de Fermat. |
+| **AES Lab** | Criptografia simétrica, uso de chaves, modos de operação e influência de parâmetros como vetores de inicialização e padding. |
+| **File Integrity** | Funções de hash, resumos criptográficos e comparação de arquivos para estudar a detecção de alterações. |
+| **Signatures** | Fundamentos de assinaturas digitais e a relação entre hashes, chaves públicas e privadas, autenticidade e integridade. |
 
-## Primeira etapa: RSA
+Essas áreas definem a proposta de estudo do projeto e orientam a construção do laboratório.
 
-Organizar as operações existentes em funções, preservando a lógica original:
+## Objetivos
 
-- `ehprimo`: verificar primalidade.
-- `fatorar_fermat`: procurar fatores por diferença de quadrados.
-- `calcular_totiente`: calcular o totiente para dois primos distintos.
-- `calcular_chave_privada`: calcular o inverso modular do expoente público.
-- `texto_para_numero` e `numero_para_texto`: converter representações.
-- `criptografar` e `descriptografar`: realizar operações modulares de RSA.
-- `main`: organizar a interação pelo terminal.
+- **Compreender os fundamentos:** relacionar conceitos matemáticos ao comportamento dos algoritmos.
+- **Experimentar com clareza:** observar como mensagens, chaves e parâmetros afetam os resultados.
+- **Analisar a segurança:** estudar limitações, escolhas inadequadas e diferenças entre demonstrações didáticas e aplicações reais.
+- **Consolidar conhecimento:** transformar os estudos em código legível e explicações técnicas.
+- **Conectar criptografia e cibersegurança:** compreender o papel dessas técnicas na proteção e na verificação de informações.
 
-Os nomes e as interfaces serão ajustados ao código efetivamente incorporado.
+## Abordagem
 
-## Evolução prevista
+O CryptoLab adota uma abordagem modular, com separação entre os conceitos estudados e as operações de cada algoritmo. A prioridade é tornar o raciocínio acessível, permitindo acompanhar as transformações dos dados e compreender o motivo de cada etapa.
 
-- [x] Preparar a estrutura inicial e o README.
-- [ ] Incorporar o código RSA atualizado.
-- [ ] Documentar a execução, as entradas e as limitações do RSA.
-- [ ] Validar o RSA com exemplos e testes.
-- [ ] Desenvolver estudos de hexadecimal, Base64 e ROT13.
-- [ ] Desenvolver estudos de XOR.
-- [ ] Desenvolver estudos de AES.
-- [ ] Avaliar módulos de integridade de arquivos e assinaturas digitais.
+**Python** é a linguagem central do laboratório por permitir expressar operações matemáticas e manipular dados de forma direta. A experimentação é acompanhada por documentação e validação com resultados conhecidos, favorecendo a reprodução e a análise dos estudos.
 
-Os itens futuros são propostas de estudo e ainda não estão implementados.
-
-## Preparação do ambiente
-
-Instale Python 3.10 ou superior e, dentro da pasta do projeto, crie um ambiente virtual:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-No Windows PowerShell, ative com:
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-A base inicial não possui dependências externas. Os comandos de execução serão adicionados junto com o primeiro módulo funcional.
-
-## Documentação e histórico
-
-O progresso está em [docs/EVOLUCAO.md](docs/EVOLUCAO.md). Cada implementação deve atualizar o README quando alterar o uso do projeto e registrar seu resultado no histórico do Git.
-
-## Uso educacional
-
-As implementações didáticas servem para estudos e desafios autorizados. RSA sem padding e exemplos com números pequenos não são adequados para proteger dados reais.
+O propósito do projeto é educacional: desenvolver compreensão técnica sobre os mecanismos criptográficos e seus limites de aplicação.
 
 ## Autor
 
-[Nicolas Moreira Silva](https://github.com/NicolasSec) — estudante de Cibersegurança.
+**Nicolas Moreira Silva**  
+Estudante de Cibersegurança e desenvolvedor do CryptoLab.
+
+[Perfil no GitHub](https://github.com/NicolasSec)
