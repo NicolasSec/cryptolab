@@ -35,6 +35,27 @@ O escopo do CryptoLab está organizado em seis áreas complementares:
 
 Essas áreas definem a proposta de estudo do projeto e orientam a construção do laboratório.
 
+## Parte 3 — RSA Lab
+
+A terceira parte do CryptoLab implementa um laboratório interativo de criptografia assimétrica baseado nos fundamentos matemáticos do RSA. O módulo apresenta três operações independentes:
+
+| Operação | Entrada | Funcionalidade |
+| --- | --- | --- |
+| **Criptografia** | Módulo público `N`, expoente público `e` e texto | Converte a mensagem UTF-8 em um inteiro e aplica a exponenciação modular RSA. |
+| **Descriptografia** | Módulo `N`, expoente privado `d` e cifra numérica | Recupera o inteiro original e tenta interpretá-lo como texto UTF-8. |
+| **Criptoanálise (Fermat)** | Módulo público `N`, expoente `e` e cifra numérica | Fatora módulos vulneráveis com primos próximos, valida os fatores, calcula o totiente de Euler, reconstrói `d` e tenta recuperar a mensagem. |
+
+A implementação utiliza a aritmética de inteiros do Python, o cálculo de raízes quadradas inteiras, a verificação de primalidade e o inverso modular. Seu desenvolvimento prioriza a compreensão de cada etapa e a observação das limitações matemáticas e operacionais dos algoritmos.
+
+O módulo inclui testes automatizados com **pytest**, abrangendo resultados conhecidos, casos inválidos, conversões UTF-8 e as três operações disponíveis no terminal.
+
+**Uso didático:** esta implementação demonstra RSA sem padding e fatoração de Fermat; não se destina à proteção de dados reais. A fatoração depende das características dos fatores de `N`, e dados recuperados não representam necessariamente texto UTF-8. Para aplicações reais, devem ser usados esquemas padronizados, como RSA-OAEP, com bibliotecas confiáveis.
+
+```bash
+python -m cryptolab.rsa
+python -m pytest -q
+```
+
 ## Objetivos
 
 - **Compreender os fundamentos:** relacionar conceitos matemáticos ao comportamento dos algoritmos.
