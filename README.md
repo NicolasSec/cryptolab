@@ -6,7 +6,7 @@
 
 Laboratório pessoal de criptografia em Python para explorar algoritmos, compreender seus fundamentos matemáticos e estudar a segurança da informação na prática.
 
-[Sobre](#sobre-o-projeto) · [Áreas de estudo](#áreas-de-estudo) · [Abordagem](#abordagem) · [Autor](#autor)
+[Sobre](#sobre-o-projeto) · [Áreas de estudo](#áreas-de-estudo) · [Decoder](#parte-1--decoder) · [RSA Lab](#parte-3--rsa-lab) · [Abordagem](#abordagem) · [Autor](#autor)
 
 </div>
 
@@ -26,7 +26,7 @@ O escopo do CryptoLab está organizado em seis áreas complementares:
 
 | Área | Foco |
 | --- | --- |
-| **Decoder** | Representação e transformação de dados com hexadecimal, Base64 e ROT13, distinguindo codificação de criptografia. |
+| **Decoder** | Codificação e decodificação de texto em Base64, hexadecimal, binário, ROT13 e URL Encoding, com análise heurística de formatos e processamento de múltiplas camadas. |
 | **XOR Analyzer** | Operações bit a bit, aplicação de chaves e análise de padrões para compreender o papel do XOR em transformações criptográficas. |
 | **RSA Lab** | Criptografia de chave pública, números primos, aritmética modular, totiente de Euler, inverso modular e fatoração pelo método de Fermat. |
 | **AES Lab** | Criptografia simétrica, uso de chaves, modos de operação e influência de parâmetros como vetores de inicialização e padding. |
@@ -34,6 +34,28 @@ O escopo do CryptoLab está organizado em seis áreas complementares:
 | **Signatures** | Fundamentos de assinaturas digitais e a relação entre hashes, chaves públicas e privadas, autenticidade e integridade. |
 
 Essas áreas definem a proposta de estudo do projeto e orientam a construção do laboratório.
+
+## Parte 1 — Decoder
+
+O **Decoder** é um módulo interativo voltado à representação de dados e à análise de conteúdos codificados. Reúne transformações de texto em uma interface de terminal e permite examinar diferentes formas de representar uma mesma informação, distinguindo mecanismos de codificação de técnicas criptográficas.
+
+| Recurso | Funcionalidade |
+| --- | --- |
+| **Base64** | Codificação e decodificação de mensagens UTF-8, com validação de entradas Base64 na decodificação. |
+| **Hexadecimal** | Conversão entre texto UTF-8 e sua representação hexadecimal. |
+| **Binário** | Conversão de texto UTF-8 em sequências de bits e recuperação do texto a partir de grupos de 8 bits. |
+| **ROT13** | Substituição de letras do alfabeto latino com deslocamento fixo de 13 posições, preservando outros caracteres. |
+| **URL Encoding** | Codificação percentual e decodificação de texto em URLs. |
+| **Identificação automática** | Verificação heurística de possíveis formatos Base64, hexadecimal, binário e URL Encoding. |
+| **Decodificação em camadas** | Aplicação sequencial de transformações reconhecidas, com registro das etapas e limite de iterações. |
+
+A identificação automática retorna **possíveis interpretações**, não uma classificação definitiva. Para evitar escolhas arbitrárias, a decodificação em camadas interrompe o processamento quando mais de um formato é identificado, quando não há novo resultado ou quando o limite é atingido. O processamento atual é orientado a texto UTF-8; dados binários arbitrários podem não ser interpretados corretamente.
+
+O módulo utiliza exclusivamente bibliotecas padrão do Python e oferece operações manuais e automáticas no terminal.
+
+```bash
+python -m cryptolab.decoder
+```
 
 ## Parte 3 — RSA Lab
 
