@@ -59,20 +59,19 @@ python -m cryptolab.decoder
 
 ## Parte 2 — XOR Analyzer
 
-O **XOR Analyzer** é um módulo interativo dedicado ao estudo de operações lógicas bit a bit e à análise de mensagens ofuscadas por XOR com chaves de um byte. Sua implementação permite observar a reversibilidade dessa operação e explorar a recuperação de conteúdos por meio da avaliação exaustiva das 256 chaves possíveis.
+O **XOR Analyzer** é um módulo interativo para explorar operações lógicas bit a bit, ofuscação de dados e análise por força bruta de chaves XOR de um byte. O laboratório aplica a operação XOR a sequências de bytes e testa todas as 256 chaves possíveis, permitindo observar a reversibilidade do algoritmo e examinar possíveis mensagens recuperadas.
 
 | Recurso | Funcionalidade |
 | --- | --- |
-| **Aplicação de XOR** | Combina os bytes de um texto UTF-8 com uma chave numérica por meio da operação XOR. |
-| **Análise de 256 chaves** | Testa todas as chaves de 0 a 255 sobre os bytes da mensagem informada. |
-| **Verificação de legibilidade** | Tenta interpretar os resultados como UTF-8 e identifica aqueles compostos por caracteres imprimíveis. |
-| **Exibição de candidatos** | Apresenta as chaves e as mensagens que passam pelo filtro de legibilidade. |
+| **Aplicação de XOR** | Executa a operação bit a bit entre cada byte da mensagem e uma chave informada. |
+| **Entradas em diferentes formatos** | Interpreta texto UTF-8, hexadecimal e Base64, convertendo as entradas em bytes para análise. |
+| **Análise das 256 chaves** | Avalia exaustivamente as chaves de 0 a 255 sobre os dados fornecidos. |
+| **Pontuação heurística** | Atribui notas de 0 a 100 com base em caracteres ASCII imprimíveis, letras e espaços, considerando resultados que possam ser decodificados em UTF-8. |
+| **Classificação de candidatos** | Ordena as tentativas pela pontuação e apresenta os cinco resultados mais bem classificados, com suas respectivas chaves. |
 
-O processo de análise utiliza uma abordagem de **força bruta sobre o espaço de chaves de 8 bits**. O filtro de legibilidade facilita a inspeção dos resultados, mas não comprova que uma chave seja a correta: sequências imprimíveis podem não conter mensagens significativas.
+O módulo permite trabalhar diretamente com representações textuais de bytes, como hexadecimal e Base64, facilitando experimentos com mensagens ofuscadas. Sua análise de pontuação usa critérios simples de legibilidade: **uma nota maior não comprova que a chave ou a mensagem estejam corretas**, e textos válidos podem não figurar entre os cinco resultados exibidos.
 
-O módulo recebe texto pelo terminal e o converte em UTF-8 antes de testar as chaves. Nesta implementação, a entrada não contempla diretamente bytes arbitrários, arquivos binários ou conteúdos codificados em hexadecimal e Base64.
-
-**Uso didático:** XOR com uma chave fixa de um byte representa uma forma simples de ofuscação, não um mecanismo adequado para proteger informações sensíveis.
+**Uso didático:** XOR com chave fixa de um byte não oferece proteção criptográfica adequada. A análise apresentada é introdutória e não realiza identificação linguística, análise de frequência avançada ou processamento direto de arquivos.
 
 ```bash
 python -m cryptolab.xor
