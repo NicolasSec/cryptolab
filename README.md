@@ -6,7 +6,7 @@
 
 Laboratório pessoal de criptografia em Python para explorar algoritmos, compreender seus fundamentos matemáticos e estudar a segurança da informação na prática.
 
-[Sobre](#sobre-o-projeto) · [Áreas de estudo](#áreas-de-estudo) · [Decoder](#parte-1--decoder) · [RSA Lab](#parte-3--rsa-lab) · [Abordagem](#abordagem) · [Autor](#autor)
+[Sobre](#sobre-o-projeto) · [Áreas de estudo](#áreas-de-estudo) · [Decoder](#parte-1--decoder) · [XOR Analyzer](#parte-2--xor-analyzer) · [RSA Lab](#parte-3--rsa-lab) · [Abordagem](#abordagem) · [Autor](#autor)
 
 </div>
 
@@ -55,6 +55,27 @@ O módulo utiliza exclusivamente bibliotecas padrão do Python e oferece operaç
 
 ```bash
 python -m cryptolab.decoder
+```
+
+## Parte 2 — XOR Analyzer
+
+O **XOR Analyzer** é um módulo interativo dedicado ao estudo de operações lógicas bit a bit e à análise de mensagens ofuscadas por XOR com chaves de um byte. Sua implementação permite observar a reversibilidade dessa operação e explorar a recuperação de conteúdos por meio da avaliação exaustiva das 256 chaves possíveis.
+
+| Recurso | Funcionalidade |
+| --- | --- |
+| **Aplicação de XOR** | Combina os bytes de um texto UTF-8 com uma chave numérica por meio da operação XOR. |
+| **Análise de 256 chaves** | Testa todas as chaves de 0 a 255 sobre os bytes da mensagem informada. |
+| **Verificação de legibilidade** | Tenta interpretar os resultados como UTF-8 e identifica aqueles compostos por caracteres imprimíveis. |
+| **Exibição de candidatos** | Apresenta as chaves e as mensagens que passam pelo filtro de legibilidade. |
+
+O processo de análise utiliza uma abordagem de **força bruta sobre o espaço de chaves de 8 bits**. O filtro de legibilidade facilita a inspeção dos resultados, mas não comprova que uma chave seja a correta: sequências imprimíveis podem não conter mensagens significativas.
+
+O módulo recebe texto pelo terminal e o converte em UTF-8 antes de testar as chaves. Nesta implementação, a entrada não contempla diretamente bytes arbitrários, arquivos binários ou conteúdos codificados em hexadecimal e Base64.
+
+**Uso didático:** XOR com uma chave fixa de um byte representa uma forma simples de ofuscação, não um mecanismo adequado para proteger informações sensíveis.
+
+```bash
+python -m cryptolab.xor
 ```
 
 ## Parte 3 — RSA Lab
